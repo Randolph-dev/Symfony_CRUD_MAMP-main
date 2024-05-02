@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<body>
+		<div class="header">
+			<h2>CRUD App</h2>
+			<form action="{{path ('create_task')}}" method="post">
+				<input name="title" type="text" id="myInput" placeholder="Task title..."/>
+				<button type="submit" class="addBtn">Add a task</button>
+			</form>
+		</div>
+
+		<ul>
+		{% for task in tasks %}
+			<li {% if task.status %} class="checked" {% endif %}>
+				<a href="{{path('update_task', {'id': 1})}}" <span class="task-list-item">{{task.title}}</span>
+				<a onlclick="return confirm('Are you sure you want to delete?')" href="{{path('delete_task', {'id': task})}}"
+					<span class="task-list-item">Do shopping
+					</span>
+			</li>
+			{% endfor %}
+		</ul>
+	</body>
+{% endblock %}
