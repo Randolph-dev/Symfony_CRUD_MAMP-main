@@ -1,6 +1,6 @@
 import './App.css';
-import ProjectList from './components/ProjectList';
-import AddProject from './components/AddProject';
+import ProjectList from './components/ProjectList.jsx';
+import AddProject from './components/AddProject.jsx';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import React, { useState } from 'react';
 

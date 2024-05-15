@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Swal from 'sweetalert';
+
 
 const ProjectList = () => {
   const [projects, setProjects] = useState([]);
@@ -25,19 +27,24 @@ const ProjectList = () => {
 
   const handleDelete = (projectId) => {
     // Logic to handle delete
-    if (window.confirm("Are you sure you want to delete?")) {
+    if (Swal.fire({
+      title: "Alert!",
+      text: "Are you sure you want to delete?",
+      icon: "success",
+    }));
+    {
       axios
-      .delete(`http://localhost:8007/api/projects/${projectId}`);
-      .then(() => {
-        setProjects(projects.filter((project) => project.id !== projectId)));
-      })
-      .catch((error) => {
-        console.log('Error:', error);
-      });
+        .delete(`http://localhost:8007/api/projects/${projectId}`)
+        .then(() => {
+          setProjects(projects.filter((project) => project.id !== projectId));
+        })
+        .catch((error) => {
+          console.log('Error:', error);
+        });
     }
-    
     console.log('Delete project with id:', projectId);
   };
+  
 
   return (
     <div>

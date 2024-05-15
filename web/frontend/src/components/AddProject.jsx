@@ -18,19 +18,6 @@ const AddProject = () => {
       .catch((error) => console.error('Error:', error));
   };
 
-    
-    // The delete functionality is coming from deleting a specific item, we are going to need to pass the ID parameter to the function.
-
-    // Make a copy of state since state still can’t be added or deleted directly in state. Rather than performing an operation such as this.state.tasks.splice(parameter, number of indices we are deleting) we need to make the copy.
-    // Splice.
-    // Set the state with the spliced copy.
-
-  const handleDelete = (id) => {
-    let copy = [...this.state.tasks];
-    copy.splice(id, 1);
-    this.state({tasks:copy});
-  }
-
   return (
     <form onSubmit={handleSubmit}>
       <h1>Add Project</h1>
