@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert';
+import { useNavigate } from 'react-router-dom';
 
 
 const ProjectList = () => {
   const [projects, setProjects] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -20,7 +22,7 @@ const ProjectList = () => {
   }, []);
 
   const handleEdit = (projectId) => {
-    // Logic to handle edit
+    navigate(`/exit-project/${projectId}`);
 
     console.log('Edit project with id:', projectId);
   };
